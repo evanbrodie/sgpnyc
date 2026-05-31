@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGP International</title>
+  <meta name="description" content="SGP International — Exceptional software engineering since 1987. Systems for Information Management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a3557;
+      --blue-heading: #1d4e7a;
+      --green: #3d8a4e;
+      --green-hover: #2e6e3c;
+      --bg-light: #e8e5df;
+      --bg-white: #f4f3f1;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-light: #666;
+      --border: #ccc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 70px;
+      background: rgba(20,20,20,0.88);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+      filter: grayscale(20%);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.7; }
+
+    .nav-links .has-dropdown {
+      position: relative;
+    }
+
+    .dropdown-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0;
+      transition: opacity 0.2s;
+    }
+
+    .dropdown-btn:hover { opacity: 0.7; }
+
+    .dropdown-btn .arrow {
+      font-size: 12px;
+      transition: transform 0.2s;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 0;
+      background: rgba(20,20,20,0.96);
+      border-radius: 4px;
+      list-style: none;
+      min-width: 180px;
+      padding: 8px 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      z-index: 200;
+    }
+
+    .has-dropdown:hover .dropdown-menu,
+    .has-dropdown:focus-within .dropdown-menu { display: block; }
+
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      transition: background 0.15s;
+    }
+
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); opacity: 1; }
+
+    .nav-cta {
+      background: var(--green);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/sgpnyc/images/site/centralPark.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.55);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .hero-content h1 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero-content p {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      line-height: 1.4;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .btn-green {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-green:hover {
+      background: var(--green-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ── LOGO STRIP ── */
+    #clients {
+      background: #f0eeea;
+      padding: 18px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-track {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      animation: scroll-logos 30s linear infinite;
+      width: max-content;
+    }
+
+    .logo-track img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(20%);
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+
+    @keyframes scroll-logos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 100px 60px; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 400;
+      color: var(--blue-heading);
+      margin-bottom: 60px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg-light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-logo-img {
+      width: 100%;
+      max-width: 260px;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+
+    .about-ms {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ms-badge {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: underline;
+      font-style: italic;
+    }
+
+    .about-ms img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg-light);
+      border-top: 1px solid #d5d2cc;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 60px;
+    }
+
+    .service-item h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+    }
+
+    .service-item p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 10px;
+    }
+
+    .service-item ul {
+      padding-left: 20px;
+      color: var(--text-mid);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* ── PRODUCTS ── */
+    #products {
+      background: var(--bg-light);
+      border-top: 1px solid #d5d2cc;
+    }
+
+    .products-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .product-icons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .product-icon-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      text-align: center;
+      line-height: 1.2;
+      border: none;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .product-icon-btn:hover { transform: scale(1.08); }
+    .product-icon-btn.active { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 5px rgba(0,0,0,0.15); }
+
+    .icon-dox { background: #2b6bbd; }
+    .icon-cdb { background: var(--green); }
+    .icon-reds { background: #b84040; }
+    .icon-wf { background: #2b4a7a; }
+
+    .products-divider {
+      border: none;
+      border-top: 1px solid #b0aca5;
+      margin-bottom: 64px;
+    }
+
+    .product-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid #c0bcb5;
+    }
+
+    .product-panel:last-of-type {
+      border-bottom: none;
+    }
+
+    .product-left {}
+
+    .product-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .product-circle span {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.02em;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+
+    .product-title strong {
+      font-weight: 700;
+    }
+
+    .product-feature {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-top: 1px solid #c0bcb5;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--text-dark);
+    }
+
+    .product-feature:last-of-type { border-bottom: 1px solid #c0bcb5; }
+
+
+    .feature-body {
+      display: none;
+      padding: 12px 0 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      border-bottom: 1px solid #c0bcb5;
+    }
+
+    .product-feature.open .chevron {
+      transform: rotate(180deg);
+      display: inline-block;
+    }
+
+    .product-feature { cursor: pointer; }
+    .product-feature .chevron {
+      font-size: 18px;
+      color: var(--text-light);
+      transition: transform 0.2s;
+    }
+
+    .btn-green-sm {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 32px;
+      transition: background 0.2s;
+    }
+
+    .btn-green-sm:hover { background: var(--green-hover); }
+
+    .product-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .product-screenshot {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .product-screenshot-sm {
+      width: 80%;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      align-self: flex-end;
+    }
+
+    /* ── MISSION ── */
+    #mission {
+      background: var(--bg-light);
+      border-top: 1px solid #d5d2cc;
+      text-align: center;
+      position: relative;
+      padding-bottom: 120px;
+    }
+
+    #mission h2 {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    #mission p {
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--navy);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .mission-wave {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: #f4f3f1;
+      clip-path: ellipse(55% 100% at 30% 100%);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg-white);
+      padding: 100px 60px;
+    }
+
+    .contact-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 400;
+      color: var(--blue-heading);
+      margin-bottom: 48px;
+    }
+
+    .contact-person {
+      margin-bottom: 36px;
+    }
+
+    .contact-person h3 {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .contact-person a {
+      color: var(--text-dark);
+      text-decoration: none;
+      display: block;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .contact-person a:hover { text-decoration: underline; }
+
+    .contact-address {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-top: 36px;
+    }
+
+    /* form */
+    .contact-form label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+
+    .contact-form label:first-child { margin-top: 0; }
+
+    .name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"] {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 10px 12px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus { border-color: var(--blue-heading); }
+
+    .required-note {
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .form-label-row {
+      display: flex;
+      gap: 6px;
+      align-items: baseline;
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+
+    .btn-send {
+      margin-top: 24px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-send:hover { background: var(--green-hover); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1a1a;
+      color: #888;
+      text-align: center;
+      padding: 24px 40px;
+      font-size: 13px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      section { padding: 70px 30px; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .product-panel.active { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .name-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="/sgpnyc/">
+    <img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="/sgpnyc/">Home</a></li>
+    <li class="has-dropdown"><button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button><ul class="dropdown-menu"><li><a href="/sgpnyc/abt/">About SGP</a></li><li><a href="/sgpnyc/services/">Services</a></li><li><a href="/sgpnyc/products/">Products</a></li><li><a href="/sgpnyc/success/">Success Stories</a></li><li><a href="/sgpnyc/partners/">Customers</a></li><li><a href="/sgpnyc/new-page/">Personal Paper</a></li></ul></li>
+    <li><a href="/sgpnyc/blog/">Blog</a></li>
+    <li><a href="/sgpnyc/games/">Games</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>SGP INTERNATIONAL</h1>
+    <p>Software Solutions<br>Built With You. For You.</p>
+    <a href="#contact" class="btn-green">Contact Us</a>
+  </div>
+</section>
+
+<!-- ── CLIENT LOGOS ── -->
+<div id="clients">
+  <div class="logo-track">
+    <img src="/sgpnyc/images/logos/UniCredit_Logo_Trans.png" alt="UniCredit" />
+    <img src="/sgpnyc/images/logos/HVB_Group_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal Bank" />
+    <img src="/sgpnyc/images/logos/Allianz_Logo.jpg" alt="Allianz" />
+    <img src="/sgpnyc/images/logos/NYU_Langone_Trans.png" alt="NYU Langone" />
+    <img src="/sgpnyc/images/logos/Nord_LB_logo_Trans.png" alt="Nord LB" />
+    <img src="/sgpnyc/images/logos/rabobank_Logo_Trans.png" alt="Rabobank" />
+    <img src="/sgpnyc/images/logos/WiseMusic_Logo_Trans.png" alt="Wise Music" />
+    <img src="/sgpnyc/images/logos/ClarkTransfer_Logo_Trans.png" alt="Clark Transfer" />
+    <img src="/sgpnyc/images/logos/Hypo_Real_Estate_Logo_Trans.png" alt="Hypo Real Estate" />
+    <img src="/sgpnyc/images/logos/uchicago_Logo_Trans.png" alt="University of Chicago" />
+    <img src="/sgpnyc/images/logos/Thyssenkrupp_AG_Logo.png" alt="ThyssenKrupp" />
+    <img src="/sgpnyc/images/logos/Emigrant_Bank_Logo_trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/rytech_Logo.png" alt="Rytech" />
+    <img src="/sgpnyc/images/logos/Depfa_Bank_Logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Bayernlb_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/ACLD_Foundation_Logo_Trans.png" alt="ACLD Foundation" />
+    <img src="/sgpnyc/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Client" />
+    <img src="/sgpnyc/images/logos/Wella_logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Maidenform_Logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Bayernlb_Trans.png" alt="Bayern LB" />
+    <img src="/sgpnyc/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/windup_Records_Logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/ViART_Logo_Trans.png" alt="ViART" />
+    <img src="/sgpnyc/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Nationstar" />
+    <img src="/sgpnyc/images/logos/Emigrant_Bank_Logo_trans.png" alt="Emigrant Bank" />
+    <img src="/sgpnyc/images/logos/Depfa_Bank_Logo_Trans.png" alt="DEPFA Bank" />
+    <img src="/sgpnyc/images/logos/HSH_Nordbank_Logo_Trans.png" alt="HSH Nordbank" />
+    <img src="/sgpnyc/images/logos/Wella_logo_Trans.png" alt="Wella" />
+    <img src="/sgpnyc/images/logos/Maidenform_Logo_Trans.png" alt="Maidenform" />
+    <img src="/sgpnyc/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Tarrytown School Foundation" />
+    <img src="/sgpnyc/images/logos/windup_Records_Logo_Trans.png" alt="Wind-up Records" />
+    <img src="/sgpnyc/images/logos/maarifa_education_Logo_Trans.png" alt="Maarifa Education" />
+    <img src="/sgpnyc/images/logos/mr_Cooper_Rocket_Logo_Trans.png" alt="Mr. Cooper Rocket" />
+    <!-- duplicate for seamless loop -->
+    <img src="/sgpnyc/images/logos/UniCredit_Logo_Trans.png" alt="UniCredit" />
+    <img src="/sgpnyc/images/logos/HVB_Group_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal Bank" />
+    <img src="/sgpnyc/images/logos/Allianz_Logo.jpg" alt="Allianz" />
+    <img src="/sgpnyc/images/logos/NYU_Langone_Trans.png" alt="NYU Langone" />
+    <img src="/sgpnyc/images/logos/Nord_LB_logo_Trans.png" alt="Nord LB" />
+    <img src="/sgpnyc/images/logos/rabobank_Logo_Trans.png" alt="Rabobank" />
+    <img src="/sgpnyc/images/logos/WiseMusic_Logo_Trans.png" alt="Wise Music" />
+    <img src="/sgpnyc/images/logos/ClarkTransfer_Logo_Trans.png" alt="Clark Transfer" />
+    <img src="/sgpnyc/images/logos/Hypo_Real_Estate_Logo_Trans.png" alt="Hypo Real Estate" />
+    <img src="/sgpnyc/images/logos/uchicago_Logo_Trans.png" alt="University of Chicago" />
+    <img src="/sgpnyc/images/logos/Thyssenkrupp_AG_Logo.png" alt="ThyssenKrupp" />
+    <img src="/sgpnyc/images/logos/Emigrant_Bank_Logo_trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/rytech_Logo.png" alt="Rytech" />
+    <img src="/sgpnyc/images/logos/Depfa_Bank_Logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Bayernlb_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/ACLD_Foundation_Logo_Trans.png" alt="ACLD Foundation" />
+    <img src="/sgpnyc/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Client" />
+    <img src="/sgpnyc/images/logos/Wella_logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Maidenform_Logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/Bayernlb_Trans.png" alt="Bayern LB" />
+    <img src="/sgpnyc/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/windup_Records_Logo_Trans.png" alt="Client" />
+    <img src="/sgpnyc/images/logos/ViART_Logo_Trans.png" alt="ViART" />
+    <img src="/sgpnyc/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Nationstar" />
+    <img src="/sgpnyc/images/logos/Emigrant_Bank_Logo_trans.png" alt="Emigrant Bank" />
+    <img src="/sgpnyc/images/logos/Depfa_Bank_Logo_Trans.png" alt="DEPFA Bank" />
+    <img src="/sgpnyc/images/logos/HSH_Nordbank_Logo_Trans.png" alt="HSH Nordbank" />
+    <img src="/sgpnyc/images/logos/Wella_logo_Trans.png" alt="Wella" />
+    <img src="/sgpnyc/images/logos/Maidenform_Logo_Trans.png" alt="Maidenform" />
+    <img src="/sgpnyc/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Tarrytown School Foundation" />
+    <img src="/sgpnyc/images/logos/windup_Records_Logo_Trans.png" alt="Wind-up Records" />
+    <img src="/sgpnyc/images/logos/maarifa_education_Logo_Trans.png" alt="Maarifa Education" />
+    <img src="/sgpnyc/images/logos/mr_Cooper_Rocket_Logo_Trans.png" alt="Mr. Cooper Rocket" />
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <h2 class="section-title">About Us</h2>
+    <div class="about-grid">
+      <div>
+        <img class="about-logo-img" src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International seal" />
+      </div>
+      <div class="about-text">
+        <p>We are a team of experienced IT specialists that work closely with businesses of all sizes to address their specific technical needs.</p>
+        <p>Our business acumen allows us to adapt to changing technologies and market trends to deliver innovative, leading edge technical solutions. Clients depend on SGP for reliable and secure system architecture.</p>
+      </div>
+      <div class="about-ms">
+        <div class="ms-badge">SGP is a certified Microsoft Partner.</div>
+        <img src="/sgpnyc/images/site/about_office.png" alt="SGP team" onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="section-inner">
+    <h2 class="section-title">Services</h2>
+    <div class="services-grid">
+      <div class="service-item">
+        <h3>Consulting</h3>
+        <p>We work with our clients to understand their unique challenges, goals, and technical requirements.</p>
+      </div>
+      <div class="service-item">
+        <h3>Information Management</h3>
+        <p>SGP excels in developing data solutions to streamline your business operations and ensure data integrity.</p>
+      </div>
+      <div class="service-item">
+        <h3>Leverage Modern Technology</h3>
+        <p>Continuously evaluating technological advancements to ensure our clients have access to the best tools.</p>
+      </div>
+      <div class="service-item">
+        <h3>Custom Solutions</h3>
+        <p>Full scale applications that adapt to accommodate increasing data volumes.</p>
+        <ul>
+          <li>Rapidly developed prototypes and mockups.</li>
+          <li>Comprehensive training and support services</li>
+        </ul>
+      </div>
+      <div class="service-item">
+        <h3>Data Analytics</h3>
+        <p>State of the art reporting services via Microsoft's PowerBI. SGP's in-house PowerBI experts are equipped to develop robust reporting alongside power users.</p>
+        <ul>
+          <li>Ability to reproduce historical reports at any time</li>
+        </ul>
+      </div>
+      <div class="service-item">
+        <h3>Audit Preparedness</h3>
+        <p>State of the art security and compliance protocols built into every tool. Fully SOCII compliant along with other industry regulatory standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products">
+  <div class="section-inner">
+    <div class="products-header">
+      <h2 class="section-title" style="margin-bottom:0">Products</h2>
+      <div class="product-icons">
+        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)" style="background:transparent;padding:0"><img src="/sgpnyc/images/site/DOX_clean.png" style="width:60px;height:60px;object-fit:contain;" /></button>
+        <button class="product-icon-btn icon-cdb" onclick="showProduct('cdb',this)" style="background:transparent;padding:0"><img src="/sgpnyc/images/site/CentralDB_Logo_final.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover;background:#3d8a4e" /></button>
+        <button class="product-icon-btn icon-reds" onclick="showProduct('reds',this)" style="background:transparent;padding:0"><img src="/sgpnyc/images/site/REDSfinal.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
+        <button class="product-icon-btn icon-wf" onclick="showProduct('wf',this)" style="background:transparent;padding:0"><img src="/sgpnyc/images/site/workflow_logo.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
+      </div>
+    </div>
+    <hr class="products-divider" />
+
+    <!-- DOX -->
+    <div class="product-panel" id="panel-dox">
+      <div class="product-left">
+        <img src="/sgpnyc/images/site/DOX_clean.png" alt="DOX" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;" />
+        <div class="product-title"><strong>DOX:</strong> Document Compliance System</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Automated Tracking</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Real-time alerts and notifications to inform stakeholders of potential covenant breaches or upcoming compliance requirements.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Waivers</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Ability to waive entire requirement or specific period ending deliverable while managers can easily review and approve requests.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Intuitive Reporting</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Utilization of Microsoft Power BI's powerful visualization tools to create dynamic and interactive dashboards and reports.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Auditing</span><span class="chevron">∨</span></div>
+        <div class="feature-body"><ul style="padding-left:18px;line-height:1.8"><li>Comprehensive field-by-field audit capabilities.</li><li>Complete audit log reporting available by user or date.</li></ul></div>
+        <a href="/sgpnyc/products/#dox" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="/sgpnyc/images/site/DOX365_Sample1.png" alt="DOX screenshot" />
+        <img class="product-screenshot-sm" src="/sgpnyc/images/site/DOX365_Sample2.png" alt="DOX detail" />
+      </div>
+    </div>
+
+    <!-- CentralDB -->
+    <div class="product-panel" id="panel-cdb">
+      <div class="product-left">
+        <img src="/sgpnyc/images/site/CentralDB_Logo_final.png" alt="CentralDB" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px" />
+        <div class="product-title"><strong>CentralDB:</strong> Data Warehouse Manager</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Centralized Report Management</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Single source of truth for all reports across the organization, with version control and audit trails.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Role-Based Access Control</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Granular permissions ensure each user sees only the data and reports relevant to their role.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Automated Report Scheduling</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Schedule reports to run and distribute automatically, eliminating manual effort and ensuring timely delivery.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>User-Friendly Interface</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Intuitive design allows users to access, generate, and manage reports without technical expertise.</div>
+        <a href="/sgpnyc/products/#centraldb" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="/sgpnyc/images/site/CentralDB_Combined.png" alt="CentralDB screenshot" />
+        <img class="product-screenshot-sm" src="/sgpnyc/images/site/CentralDB_Sample1.png" alt="CentralDB interface" style="display:none" />
+      </div>
+    </div>
+
+    <!-- REDS -->
+    <div class="product-panel" id="panel-reds">
+      <div class="product-left">
+        <img src="/sgpnyc/images/site/REDSfinal.png" alt="REDS" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
+        <div class="product-title"><strong>REDS:</strong> Real Estate Portfolio Management</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Portfolio Overview</span><span class="chevron">+</span></div>
+        <div class="feature-body">Comprehensive view of entire real estate portfolio with key metrics and status indicators at a glance.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Point-In-Time Reporting</span><span class="chevron">+</span></div>
+        <div class="feature-body">Generate historical snapshots of portfolio data at any past date for auditing and analysis.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Customizable Reporting</span><span class="chevron">+</span></div>
+        <div class="feature-body">Tailor reports to specific asset classes, geographies, or business requirements with flexible templates.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Collateral Monitoring</span><span class="chevron">+</span></div>
+        <div class="feature-body">Track collateral values, LTV ratios, and covenant compliance across the entire portfolio in real time.</div>
+        <a href="/sgpnyc/products/#reds" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="/sgpnyc/images/site/REDS_Combined.png" alt="REDS screenshot" />
+      </div>
+    </div>
+
+    <!-- Workflow365 -->
+    <div class="product-panel" id="panel-wf">
+      <div class="product-left">
+        <img src="/sgpnyc/images/site/workflow_logo.png" alt="Workflow365" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
+        <div class="product-title"><strong>Workflow365:</strong> Process Management</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Customizable Processes</span><span class="chevron">+</span></div>
+        <div class="feature-body">Build and configure workflows tailored to your organization's unique approval and review processes.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>4-Eye Approvals</span><span class="chevron">+</span></div>
+        <div class="feature-body">Enforce dual-control approval policies ensuring every critical decision is reviewed by two authorized parties.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Real-Time Tracking</span><span class="chevron">+</span></div>
+        <div class="feature-body">Monitor the status of every workflow and task in real time with full visibility across teams.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Intuitive Reporting</span><span class="chevron">+</span></div>
+        <div class="feature-body">Generate comprehensive process reports and audit trails with a few clicks.</div>
+        <a href="/sgpnyc/products/#workflow" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="/sgpnyc/images/site/Workflow_Combined.png" alt="Workflow365 screenshot" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section id="mission">
+  <div class="section-inner">
+    <h2 class="section-title">Our Mission</h2>
+    <p>Is to assure our customers needs are always addressed. Prioritizing understanding the root of the problem and ensuring our customers are progressing forward.</p>
+  </div>
+  <div class="mission-wave"></div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <h2 class="contact-title">Contact us.</h2>
+      <div class="contact-person">
+        <h3>Luke Berglund</h3>
+        <a href="mailto:lberglund@sgpnyc.com">lberglund@sgpnyc.com</a>
+        <a href="tel:6466793847">(646)-679-3847</a>
+      </div>
+      <div class="contact-person">
+        <h3>Elizabeth Pelka</h3>
+        <a href="mailto:epelka@sgpnyc.com">epelka@sgpnyc.com</a>
+        <a href="tel:6466793848">(646)-679-3848</a>
+      </div>
+      <div class="contact-address">
+        405 Lexington Ave, Floor 9<br>New York, NY 10174
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <p style="font-size:14px;font-weight:500;color:var(--text-mid);margin-bottom:16px;">Name</p>
+        <div class="name-row">
+          <div>
+            <div class="form-label-row">
+              <label for="fname">First Name</label>
+              <span class="required-note">(required)</span>
+            </div>
+            <input type="text" id="fname" name="fname" required />
+          </div>
+          <div>
+            <div class="form-label-row">
+              <label for="lname">Last Name</label>
+              <span class="required-note">(required)</span>
+            </div>
+            <input type="text" id="lname" name="lname" required />
+          </div>
+        </div>
+        <div class="form-label-row" style="margin-top:20px">
+          <label for="email">Email</label>
+          <span class="required-note">(required)</span>
+        </div>
+        <input type="email" id="email" name="email" required style="width:100%" />
+        <button class="btn-send" type="button">Send</button>
+        <div style="margin-top:24px">
+          <a href="https://www.linkedin.com/company/sgp-international/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#0a66c2;font-size:14px;font-weight:500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            SGP International on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>©SGP International</p>
+</footer>
+
+<script>
+
+  function toggleFeature(el) {
+    const body = el.nextElementSibling;
+    const isOpen = el.classList.contains('open');
+    el.classList.toggle('open', !isOpen);
+    body.style.display = isOpen ? 'none' : 'block';
+  }
+
+  function showProduct(id, btn) {
+    document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.product-icon-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
